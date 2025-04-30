@@ -2,7 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import data
-from methodshomepage import UrbanRoutesPage
+from methodshomepage import UrbanRoutesPage, retrieve_phone_code
+
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Pruebas
@@ -53,8 +54,6 @@ class TestUrbanRoutes:
 
         assert routes_pages.get_phone_number_value() == '+1 123 123 12 12'
 
-
-
 # Prueba 4 Agregar una tarjeta de crédito.
     def test_set_card_number(self):
         self.test_set_phone_number()
@@ -84,6 +83,8 @@ class TestUrbanRoutes:
         self.test_send_message_for_driver()
         routes_pages = UrbanRoutesPage(self.driver)
         routes_pages.click_blanket_button()
+# Corrección: Se agrega el assert.
+        assert routes_pages.switch_button_active().is_selected() == True
 
 # Prueba 7 Pedir 2 helados.
     def test_order_two_ice_cream(self):
@@ -101,6 +102,8 @@ class TestUrbanRoutes:
         self.test_order_two_ice_cream()
         routes_pages = UrbanRoutesPage(self.driver)
         routes_pages.click_find_a_car()
+# Corrección: Se agrega el assert.
+        assert routes_pages.serch_a_car_screen() == 'Buscar automóvil'
 
 
 # Prueba 9 Esperar a que aparezca la información del conductor en el modal (opcional).
@@ -108,6 +111,8 @@ class TestUrbanRoutes:
         self.test_find_a_car()
         routes_pages = UrbanRoutesPage(self.driver)
         routes_pages.get_timeout_modal()
+# Corrección: Se agrega el assert.
+        assert routes_pages.order_shown().is_displayed() == True
 
     @classmethod
     def teardown_class(cls):

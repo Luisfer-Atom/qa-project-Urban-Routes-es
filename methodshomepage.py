@@ -171,6 +171,11 @@ class UrbanRoutesPage:
             expected_conditions.element_to_be_clickable(self.locators.slider_blanket_button)
         ).click()
 
+    def switch_button_active(self):
+        return WebDriverWait(self.driver, 5).until(
+            expected_conditions.presence_of_element_located(self.locators.switch_button)
+        )
+
 # Prueba 7:
     def get_ice_cream_button_plus(self):
         return WebDriverWait(self.driver, 5 ).until(
@@ -190,9 +195,20 @@ class UrbanRoutesPage:
             expected_conditions.element_to_be_clickable(self.locators.complete_order_button)
         ).click()
 
+    def serch_a_car_screen(self):
+        return WebDriverWait(self.driver, 5).until(
+            expected_conditions.visibility_of_element_located(self.locators.modal_serch_a_car)
+        ).text
+
+
 # Prueba 9:
     def get_timeout_modal(self):
         return WebDriverWait(self.driver,55).until(
             expected_conditions.visibility_of_element_located(self.locators.timeout_modal)
+        )
+
+    def order_shown(self):
+        return WebDriverWait(self.driver, 55).until(
+            expected_conditions.visibility_of_element_located(self.locators.order_screen_displayed)
         )
 

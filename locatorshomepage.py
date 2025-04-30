@@ -25,3 +25,6 @@ class LocatorsHomePage:
     ice_cream_counter = (By.CLASS_NAME, 'counter-value')
     complete_order_button = (By.CSS_SELECTOR, "span.smart-button-main")
     timeout_modal = (By.CSS_SELECTOR, "div.order-number")
+    switch_button = (By.CSS_SELECTOR, ".switch-input")
+    modal_serch_a_car = (By.CLASS_NAME, 'order-header-title')
+    order_screen_displayed = (By.CSS_SELECTOR, ".order.shown")
